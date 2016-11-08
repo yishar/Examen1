@@ -13,6 +13,28 @@ use common\widgets\Alert;
 AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
+
+<?php foreach (Yii::$app->session->getAllFlashes() as $message):; ?>
+            <?php
+            echo \kartik\growl\Growl::widget([
+                'type' => (!empty($message['type'])) ? $message['type'] : 'danger',
+                'title' => (!empty($message['title'])) ? Html::encode($message['title']) : 'Sin Título!',
+                'icon' => (!empty($message['icon'])) ? $message['icon'] : 'fa fa-info',
+                'body' => (!empty($message['message'])) ? Html::encode($message['message']) : 'Sin Mensaje!',
+                'showSeparator' => true,
+                'delay' => 1, //This delay is how long before the message shows
+                'pluginOptions' => [
+                    'showProgressbar' => true,
+                    'delay' => (!empty($message['duration'])) ? $message['duration'] : 3000, //This delay is how long the message shows for
+                    'placement' => [
+                        'from' => (!empty($message['positonY'])) ? $message['positonY'] : 'top',
+                        'align' => (!empty($message['positonX'])) ? $message['positonX'] : 'right',
+                    ],
+                    
+                ],
+            ]);
+            ?>
+        <?php endforeach; ?>
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>">
 <head>
@@ -60,7 +82,7 @@ AppAsset::register($this);
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
-        <?= Alert::widget() ?>
+     
         <?= $content ?>
     </div>
 </div>

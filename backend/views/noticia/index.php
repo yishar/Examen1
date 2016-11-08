@@ -27,7 +27,16 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'titulo',
             'seo_slug',
-            'detalle',
+            [
+                //'contentOptions' => ['class' => 'text-wrap'] ,
+
+                'attribute' => 'detalle',
+                'value' => function($data) {
+                  return Html::tag('span', substr(strip_tags($data->detalle), 0, 50) . '....', [ 'data-toggle' => 'tooltip', 'title' => $data->detalle, 'style' => 'cursor:help;']);
+              },  
+                       'format' => 'raw',
+                
+            ],
             'categoria_id',
             // 'estado',
             // 'created_by',

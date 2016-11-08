@@ -72,7 +72,64 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $aux = \common\models\Noticia::find();
+        
+        $pagination = new \yii\data\Pagination([
+            'defaultPageSize' => 2,
+            'totalCount' => $aux->count(),
+        ]);
+        
+        $noticia = $aux->orderBy('id desc')
+                ->offset($pagination->offset)
+                ->limit($pagination->limit)
+                ->all();
+        
+        $categoria = \common\models\Categoria::find()->all();
+        
+        return $this->render('index',
+                [
+                    'categoria' => $categoria,
+                    'pagination' =>$pagination,
+                    'noticia' => $noticia,
+                ]
+                );
+    }
+    
+    public function actionNoticia($slug)
+            {
+ 
+            
+                $categorias = \common\models\Categoria::find()->all();
+
+                
+                $noticia = \common\models\Noticia::getAllLeft($slug) ; // \common\models\Noticia::find("seo_slug = :slug", [":slug" => $slug])->one();
+                //print_r($noticia);die; 
+                //$comentario = new Comentario(["scenario" => "comentario"]);
+
+//                if ($comentario->load(Yii::$app->request->post())) {
+//
+//                    $comentario->estado         = '0';
+//                    $comentario->noticia_id     = $noticia->id;
+//                    $comentario->fecha          = new Expression("NOW()");
+//                    $comentario->correo         = Security::mcrypt($comentario->correo);
+//
+//                    if ($comentario->save()) {
+//                        Yii::$app->session->setFlash('success', 'Gracias por su comentario');
+//                    } else {
+//                        Yii::$app->session->setFlash('error', 'Su comentario no pudo ser registrado');
+//                    }
+//
+//                    return $this->redirect(["/noticia/$slug"]);
+//                }
+
+                return $this->render(
+                    'noticia',
+                    [
+                        //'comentario'     => $comentario,
+                        'categorias'    => $categorias,
+                        'noticia'       => $noticia,
+                    ]
+                );
     }
 
     /**

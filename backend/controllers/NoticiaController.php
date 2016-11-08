@@ -125,8 +125,16 @@ class NoticiaController extends Controller
             ]);
         }          
         } else {
-            throw new \yii\web\HttpException(403,'No permitido, UD SOLO PUEDE ACTUALIZAR SUS COSAS!.');
-         
+            Yii::$app->getSession()->setFlash('success', [
+                    'type' => 'success',
+                    'duration' => 5000,
+                    //'icon' => 'fa fa-users',
+                    'message' => 'No puede actualizar post de terceros',
+                    'title' => 'Mensaje-Error!',
+                    'positonY' => 'top',
+                    'positonX' => 'right'
+                ]);
+         return $this->redirect(['index']);
         }
     }
 
@@ -165,4 +173,6 @@ class NoticiaController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+    
+    
 }

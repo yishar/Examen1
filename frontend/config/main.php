@@ -41,6 +41,7 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                'noticia/<slug>'=>'site/noticia'     //Para mostrar las url directo a noticia
             ],
         ],
         

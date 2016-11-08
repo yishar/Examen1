@@ -125,4 +125,22 @@ class Noticia extends \yii\db\ActiveRecord
             ],            
         ];
     }
+    public function getAllLeft($slug) {
+
+        $query = new \yii\db\Query();
+        $query
+                ->select(['noticia.*', 'noticia.id AS idNoticia', 'noticia.titulo AS tituloNoticia','noticia.seo_slug AS seoNoticia',
+                    'noticia.detalle AS detalleNoticia','noticia.categoria_id AS categoriaNoticia','noticia.created_by AS createNoticia',
+                    'noticia.created_at AS createdatNoticia','noticia.updated_by AS updateNoticia',
+                    'noticia.updated_at AS updatedatNoticia'])
+                ->from('noticia')
+                ->where(['noticia.seo_slug' => $slug]); // COMENTARIOS APROBADOS TAMBIEN EN EL ARRAY
+
+
+        $cmd = $query->createCommand();
+        $posts = $cmd->queryAll();
+
+
+        return $posts;
+    }
 }
