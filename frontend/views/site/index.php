@@ -2,16 +2,16 @@
 
 /* @var $this yii\web\View */
 
-$this->title = 'Anthony-cms';
+$this->title = 'Anthony-CMS';
 ?>
+
+
 <div class="site-index">
 
     <div class="jumbotron">
-        <h1>Congratulations!</h1>
+        <h1>Bienvenido a!</h1>
 
-        <p class="lead">You have successfully created your Yii-powered application.</p>
-
-        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
+        <p class="lead">Anthony - CMS.</p>
     </div>
 
     <div class="body-content">
@@ -23,7 +23,6 @@ $this->title = 'Anthony-cms';
             ?>
             
             
-            
             <h4 >
                 <a href="<?= \yii\helpers\Url::to(['noticia/'. $valueNoticia->seo_slug]) ?>">
                 <?= $valueNoticia->titulo?>
@@ -31,6 +30,7 @@ $this->title = 'Anthony-cms';
             </h4>
             
             <?php endforeach; ?>
+            
             
        </div>   
     </div>
