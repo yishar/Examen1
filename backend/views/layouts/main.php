@@ -50,7 +50,7 @@ AppAsset::register($this);
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => 'Anthony CMS',
+        'brandLabel' => 'Anthony - CMS',
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
@@ -60,9 +60,8 @@ AppAsset::register($this);
         ['label' => 'Inicio', 'url' => ['/site/index']],
     ];
     if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => 'Iniciar sesion', 'url' => ['user/login']];
+        $menuItems[] = ['label' => 'Iniciar sesion', 'url' => ['/site/login']];
     } else {
-        $menuItems[]= ['label' => 'Noticia', 'url' => ['/noticia']];
         $menuItems[] = '<li>'
             . Html::beginForm(['/site/logout'], 'post')
             . Html::submitButton(
@@ -83,14 +82,14 @@ AppAsset::register($this);
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
-
-        <?= $content?>
+     
+        <?= $content ?>
     </div>
 </div>
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; Anthony CMS <?= date('Y') ?></p>
+        <p class="pull-left">&copy; Anthony - CMS <?= date('Y') ?></p>
 
         <p class="pull-right"><?= Yii::powered() ?></p>
     </div>

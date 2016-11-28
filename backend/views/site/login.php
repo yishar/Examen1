@@ -13,7 +13,11 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="site-login">
     <h1><?= Html::encode($this->title) ?></h1>
 
+<<<<<<< HEAD
     <p>Please fill out the following fields to login:</p>
+=======
+    <p>Porfavor, llene con sus datos para inicia sesion:</p>
+>>>>>>> origin/master
 
     <div class="row">
         <div class="col-lg-5">

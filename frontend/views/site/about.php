@@ -4,20 +4,13 @@
 
 use yii\helpers\Html;
 
-$this->title = 'Web Service';
+$this->title = 'About';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-
 <div class="site-about">
     <h1><?= Html::encode($this->title) ?></h1>
-<div align="center">
 
-     <!--<a name="punto"></a>-->
-     <p><a class="btn btn-md btn-success" href="../../../../rest-client">Obtener todos los paises</a></p>
-     <p><a class="btn btn-md btn-success" href="../../../../rest-client/paisId.php">Obtener pais con ID: AU</a></p>
-     
-</div>
-    
-    
-    
+    <p>This is the About page. You may modify the following file to customize its content:</p>
+
+    <code><?= __FILE__ ?></code>
 </div>

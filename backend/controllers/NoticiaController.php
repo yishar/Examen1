@@ -33,15 +33,10 @@ class NoticiaController extends Controller
                         'allow' => true,
                         'roles' => ['admin'],
                     ],
-                    [
+                     [
                         'actions' => ['logout', 'index', 'create', 'update', 'view', 'delete'],
                         'allow' => true,
                         'roles' => ['marc'],
-                    ],
-                    [
-                        'actions' => ['logout', 'index', 'create', 'update', 'view', 'delete'],
-                        'allow' => true,
-                        'roles' => ['anthony'],
                     ],
                     [
                         'actions' => ['logout', 'index'],
