@@ -42,13 +42,14 @@ AppAsset::register($this);
     ]);
     $menuItems = [
         ['label' => 'Inicio', 'url' => ['/site/index']],
-        ['label' => 'Acerca de', 'url' => ['/site/about']],
+        //['label' => 'Web Service', 'url' => ['/site/about']],
         ['label' => 'Contacto', 'url' => ['/site/contact']],
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Registrarse', 'url' => ['/user/registration/register']];
         $menuItems[] = ['label' => 'Iniciar', 'url' => ['/user/security/login']];
     } else {
+        $menuItems[]= ['label' => 'Web Service', 'url' => ['/site/about']];
         $menuItems[] = '<li>'
             . Html::beginForm(['/user/security/logout'], 'post')
             . Html::submitButton(
@@ -76,7 +77,7 @@ AppAsset::register($this);
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
+        <p class="pull-left">&copy; Anthony CMS <?= date('Y') ?></p>
 
         <p class="pull-right"><?= Yii::powered() ?></p>
     </div>

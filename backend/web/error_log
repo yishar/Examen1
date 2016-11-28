@@ -1,0 +1,8 @@
+[10-Nov-2016 10:51:36 America/Guayaquil] PHP Parse error:  syntax error, unexpected '?>' in /home/eitatqrd/public_html/anthony-cms/backend/views/layouts/main.php on line 87
+[10-Nov-2016 10:52:15 America/Guayaquil] PHP Parse error:  syntax error, unexpected '?>' in /home/eitatqrd/public_html/anthony-cms/backend/views/layouts/main.php on line 85
+[10-Nov-2016 10:52:17 America/Guayaquil] PHP Parse error:  syntax error, unexpected '?>' in /home/eitatqrd/public_html/anthony-cms/backend/views/layouts/main.php on line 85
+[10-Nov-2016 10:52:33 America/Guayaquil] PHP Parse error:  syntax error, unexpected '?>' in /home/eitatqrd/public_html/anthony-cms/backend/views/layouts/main.php on line 85
+[10-Nov-2016 10:56:40 America/Guayaquil] PHP Parse error:  syntax error, unexpected '>' in /home/eitatqrd/public_html/anthony-cms/backend/views/layouts/main.php on line 87
+[10-Nov-2016 10:57:41 America/Guayaquil] PHP Parse error:  syntax error, unexpected '<' in /home/eitatqrd/public_html/anthony-cms/backend/views/layouts/main.php on line 88
+[10-Nov-2016 10:58:30 America/Guayaquil] PHP Parse error:  syntax error, unexpected '=>' (T_DOUBLE_ARROW) in /home/eitatqrd/public_html/anthony-cms/backend/views/layouts/main.php on line 88
+[10-Nov-2016 10:58:42 America/Guayaquil] PHP Parse error:  syntax error, unexpected '=>' (T_DOUBLE_ARROW), expecting ',' or ';' in /home/eitatqrd/public_html/anthony-cms/backend/views/layouts/main.php on line 88
