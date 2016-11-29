@@ -60,8 +60,10 @@ AppAsset::register($this);
         ['label' => 'Inicio', 'url' => ['/site/index']],
     ];
     if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => 'Iniciar sesion', 'url' => ['/site/login']];
+        //$menuItems[] = ['label' => 'Iniciar sesion', 'url' => ['/site/login']];
     } else {
+        $menuItems[] = ['label' => 'Personas', 'url' => ['/user/admin']];
+        $menuItems[] = ['label' => 'Departamento', 'url' => ['/departamento']];
         $menuItems[] = '<li>'
             . Html::beginForm(['/site/logout'], 'post')
             . Html::submitButton(
