@@ -1,16 +1,16 @@
 <?php
 
-namespace backend\models;
+namespace frontend\models;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use common\models\Departamento;
+use common\models\Personas;
 
 /**
- * DepartamentoSearch represents the model behind the search form about `common\models\Departamento`.
+ * PersonasSearch represents the model behind the search form about `common\models\Personas`.
  */
-class DepartamentoSearch extends Departamento
+class PersonasSearch extends Personas
 {
     /**
      * @inheritdoc
@@ -18,8 +18,8 @@ class DepartamentoSearch extends Departamento
     public function rules()
     {
         return [
-            [['id'], 'integer'],
-            [['nombre', 'descripcion'], 'safe'],
+            [['id', 'id_departamento', 'id_user'], 'integer'],
+            [['nombre'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class DepartamentoSearch extends Departamento
      */
     public function search($params)
     {
-        $query = Departamento::find();
+        $query = Personas::find();
 
         // add conditions that should always apply here
 
@@ -60,10 +60,11 @@ class DepartamentoSearch extends Departamento
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            'id_departamento' => $this->id_departamento,
+            'id_user' => $this->id_user,
         ]);
 
-        $query->andFilterWhere(['like', 'nombre', $this->nombre])
-            ->andFilterWhere(['like', 'descripcion', $this->descripcion]);
+        $query->andFilterWhere(['like', 'nombre', $this->nombre]);
 
         return $dataProvider;
     }

@@ -9,7 +9,8 @@ $this->title = 'Anthon-CMS';
     <div class="jumbotron">
         <h1>Bienvenido a!</h1>
 
-        <p class="lead">Anthony-CMS. </p>
+        <p class="lead">Corrección de examen1. </p>
+         <img src="images/bebida.jpg">
     </div>
 
     <div class="body-content">

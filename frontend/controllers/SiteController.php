@@ -70,66 +70,16 @@ class SiteController extends Controller
      *
      * @return mixed
      */
+    
+    //Ojo creado
     public function actionIndex()
     {
-        $aux = \common\models\Noticia::find();
-        
-        $pagination = new \yii\data\Pagination([
-            'defaultPageSize' => 2,
-            'totalCount' => $aux->count(),
-        ]);
-        
-        $noticia = $aux->orderBy('id desc')
-                ->offset($pagination->offset)
-                ->limit($pagination->limit)
-                ->all();
-        
-        $categoria = \common\models\Categoria::find()->all();
-        
-        return $this->render('index',
-                [
-                    'categoria' => $categoria,
-                    'pagination' =>$pagination,
-                    'noticia' => $noticia,
-                ]
-                );
-    }
-    
-    public function actionNoticia($slug)
-            {
- 
+          if (Yii::$app->user->can('admin') || Yii::$app->user->can('superadmin')) {
             
-                $categorias = \common\models\Categoria::find()->all();
-
-                
-                $noticia = \common\models\Noticia::getAllLeft($slug) ; // \common\models\Noticia::find("seo_slug = :slug", [":slug" => $slug])->one();
-                //print_r($noticia);die; 
-                //$comentario = new Comentario(["scenario" => "comentario"]);
-
-//                if ($comentario->load(Yii::$app->request->post())) {
-//
-//                    $comentario->estado         = '0';
-//                    $comentario->noticia_id     = $noticia->id;
-//                    $comentario->fecha          = new Expression("NOW()");
-//                    $comentario->correo         = Security::mcrypt($comentario->correo);
-//
-//                    if ($comentario->save()) {
-//                        Yii::$app->session->setFlash('success', 'Gracias por su comentario');
-//                    } else {
-//                        Yii::$app->session->setFlash('error', 'Su comentario no pudo ser registrado');
-//                    }
-//
-//                    return $this->redirect(["/noticia/$slug"]);
-//                }
-
-                return $this->render(
-                    'noticia',
-                    [
-                        //'comentario'     => $comentario,
-                        'categorias'    => $categorias,
-                        'noticia'       => $noticia,
-                    ]
-                );
+            return $this->redirect(Yii::$app->request->BaseUrl .'../../../backend/web/');
+        } else {
+            return $this->render('index');
+        }
     }
 
     /**
@@ -196,6 +146,46 @@ class SiteController extends Controller
     public function actionAbout()
     {
         return $this->render('about');
+    }
+    
+    public function actionServicio()
+    {
+        return $this->render('servicio');
+    }
+    
+    /**
+     * Displays consumo page.
+     *
+     * @return mixed
+     */
+    
+    //Ojo creado
+    public function actionConsumo() //Para mostrar solo los consumos de esa persona
+    {
+        //return $this->render('consumo');
+        
+        $query= \common\models\Producto::find()->where(['id_persona'=>Yii::$app->user->identity->id]); //Condicion where para mostrar solo los productos de tal usuario
+        $total = \common\models\Producto::find()->where(['id_persona'=> Yii::$app->user->identity->id])->sum('precio');
+        
+       //$query = Noticia::find();
+        Yii::$app->db->createCommand()->update('personas', ['personas.saldo'=>$total], 'id = 4')->execute();
+        $pagination = new \yii\data\Pagination([
+            'defaultPageSize'   => 4,
+            'totalCount'        => $query->count(),
+        ]);
+        $productos = $query->orderBy('id desc') //id -> id de producto y desc -> para que muestre lo consumido de ultimo
+                    ->offset($pagination->offset)
+                    ->limit($pagination->limit)
+                    ->all();
+        
+        return $this->render(
+            'consumo',
+            [
+                'pagination'    => $pagination,
+                'productos'      => $productos,
+                'total'          => $total,
+            ]
+        );
     }
 
     /**

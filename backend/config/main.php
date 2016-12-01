@@ -37,14 +37,22 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        
-        'urlManager' => [
+        //Lo comenté
+        /*'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
             ],
+        ],*/
+        //Reemplacé por esto
+        'urlManager' => [
+            'enablePrettyUrl' => true,
+            'showScriptName' => false,
+            // 'enableStrictParsing' => true,
+            'rules' => [
+                    ['class' => 'yii\rest\UrlRule', 'controller' => 'api'],
+            ],
         ],
-        
     ],
     'modules' => [
     'user' => [

@@ -5,20 +5,20 @@ namespace common\models;
 use Yii;
 
 /**
- * This is the model class for table "departamento".
+ * This is the model class for table "producto".
  *
- * @property integer $id
  * @property string $nombre
- * @property string $descripcion
+ * @property double $precio
+ * @property integer $id_persona
  */
-class Departamento extends \yii\db\ActiveRecord
+class Producto extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'departamento';
+        return 'producto';
     }
 
     /**
@@ -27,9 +27,10 @@ class Departamento extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nombre'], 'required'],
-            [['nombre'], 'string', 'max' => 40],
-            [['descripcion'], 'string', 'max' => 100],
+            [['nombre', 'id_persona'], 'required'],
+            [['nombre'], 'string'],
+            [['precio'], 'number'],
+            [['id_persona'], 'integer'],
         ];
     }
 
@@ -39,9 +40,9 @@ class Departamento extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
             'nombre' => 'Nombre',
-            'descripcion' => 'Descripcion',
+            'precio' => 'Precio',
+            'id_persona' => 'Id Persona',
         ];
     }
 }

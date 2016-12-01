@@ -42,13 +42,16 @@ AppAsset::register($this);
     ]);
     $menuItems = [
         ['label' => 'Inicio', 'url' => ['/site/index']],
-        ['label' => 'Servicio Web', 'url' => ['/site/about']],
+        //['label' => 'Acerca de', 'url' => ['/site/about']],
         ['label' => 'Contacto', 'url' => ['/site/contact']],
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Registrarse', 'url' => ['/user/registration/register']];
         $menuItems[] = ['label' => 'Iniciar', 'url' => ['/user/security/login']];
     } else {
+        $menuItems[] = ['label' => 'Consumir', 'url' => ['/producto/create']];
+        $menuItems[] = ['label' => 'Consumo total', 'url' => ['site/consumo']];
+        $menuItems[] = ['label' => 'Servicio', 'url' => ['site/servicio']];
         $menuItems[] = '<li>'
             . Html::beginForm(['/user/security/logout'], 'post')
             . Html::submitButton(
