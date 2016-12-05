@@ -5,10 +5,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+/* @var $this yii\web\View */
+/* @var $name string */
+/* @var $message string */
+/* @var $exception Exception */
+/* @var $ID integer */
+
+use yii\helpers\Html;
+
 
 namespace backend\controllers;
 
 use yii\rest\ActiveController;
+
+
 
 class ApiController extends ActiveController
 {
@@ -26,6 +36,8 @@ class ApiController extends ActiveController
         // ---> ME DEVUELVE LA DEUDA ACUMULADA DE CONSUMOS DEL USUARIO
 //        $query = \common\models\Producto::find()->where(['persona_id'=>$usuario])->sum('precio');
 //        return $query;
+        //$ID = Yii::$app->user->identity->id;
+       
         
         if($opcion == 'saldo'){
         $query = \common\models\Producto::find()->where(['id_persona'=>$usuario])->sum('precio');

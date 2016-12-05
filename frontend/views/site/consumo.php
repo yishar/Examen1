@@ -4,7 +4,6 @@
 /* @var $name string */
 /* @var $message string */
 /* @var $exception Exception */
-
 use yii\helpers\Html;
 
 $this->title = 'Consumo de usuario';
@@ -34,5 +33,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="row text-center"><?php echo yii\widgets\LinkPager::widget(['pagination'=>$pagination]); ?></div>
     
     <?= '<strong>'.'Total consumo: $'. round($total, 2).'</strong>'   ?>
+    
+    <?php 
 
+$mi = Yii::$app->user->identity->id;
+
+echo $mi;
+?>
 </div>

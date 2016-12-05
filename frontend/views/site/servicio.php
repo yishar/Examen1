@@ -12,7 +12,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-consumo">
 
-    <p align="center"><a  class="btn btn-md btn-success" href="http://localhost/rest-client/consumo.php">Todos los consumos</a></p>
-    <p align="center" ><a  class="btn btn-lg btn-success" href="http://localhost/rest-client/saldo.php">Total consumo por (id)</a></p>
+    <p align="center"><a  class="btn btn-md btn-success" href="http://localhost/rest_client/consumo.php">Todos los consumos</a></p>
+    <p align="center" ><a  class="btn btn-lg btn-success" href="http://localhost/rest_client/saldo.php">Total saldo por (id)</a></p>
 
 </div>
